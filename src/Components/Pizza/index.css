@@ -1,0 +1,15 @@
+.loading{
+    display: grid !important;
+    grid-template-columns: repeat(100, 1vw);
+    grid-template-rows: repeat(83, 1vh);
+    width: 100vw;
+    height: 83vh;
+    grid-row: 0;
+    grid-column:0;
+    background-color: white;
+}
+
+.loadingGif{
+    grid-row: 10;
+    grid-column:35;
+}

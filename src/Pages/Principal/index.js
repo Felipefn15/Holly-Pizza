@@ -115,7 +115,7 @@ class Principal extends Component {
     }
   }
     render(){
-      if(false === true){
+      if(this.state.item.loaded){
         let data = this.state.item.data[this.state.menu]
         return (
           <div className="itensMenu">

@@ -79,7 +79,7 @@ export default function Header(props) {
     return (
         <div className="header">
           <div className="headerTitle">
-            <img src={logo} alt="Logo" className="logoImage" />
+            <a href='/'><img src={logo} alt="Logo" className="logoImage" /></a>
           </div>
           <div className="cart">
             <IconButton color="inherit" aria-label="menu">

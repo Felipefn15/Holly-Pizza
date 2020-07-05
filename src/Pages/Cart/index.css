@@ -50,6 +50,135 @@
 
 .btnCheckout{
     grid-row: 2;
-    width: 7vw !important;
+    width: 7vw;
     grid-column:90;
+}
+
+@media screen and (max-width: 1025px) {
+    .zip{
+        grid-row: 2;
+        width: 10vw;
+        grid-column:0;
+    }
+    
+    
+    .zipField{
+        grid-row: 2;
+        min-width: 8vw !important;
+        grid-column:9;
+    }
+    
+    
+    .btnCalculate{
+        grid-row: 2;
+        width: 12vw !important;
+        grid-column:20;
+    }
+    
+    .freight{
+        grid-row: 2;
+        width: 10vw;
+        grid-column:34;
+    }
+
+    .total{
+        grid-row: 2;
+        width: 15vw ;
+        grid-column:65;
+    }
+
+    .btnCheckout{
+        grid-row: 2;
+        width: 12vw !important;
+        grid-column:85;
+    }
+    
+}
+
+
+@media screen and (max-width: 769px) {
+    .zip{
+        grid-row: 2;
+        width: 10vw;
+        grid-column:0;
+    }
+    
+    
+    .zipField{
+        grid-row: 2;
+        min-width: 8vw !important;
+        grid-column:10;
+    }
+    
+    
+    .btnCalculate{
+        grid-row: 2;
+        width: 12vw !important;
+        grid-column:20;
+    }
+    
+    .freight{
+        grid-row: 2;
+        width: 16vw;
+        grid-column:34;
+    }
+
+    .total{
+        grid-row: 2;
+        width: 20vw ;
+        grid-column:60;
+    }
+
+    .btnCheckout{
+        grid-row: 2;
+        width: 15vw !important;
+        grid-column:83;
+    }
+    
+}
+
+@media screen and (max-width: 426px) {
+    .zip{
+        grid-row: 4;
+        width: 10vw;
+        font-size:10px;
+        grid-column:0;
+    }
+    
+    
+    .zipField{
+        grid-row: 3;
+        min-width: 8vw !important;
+        grid-column:12;
+    }
+    
+    
+    .btnCalculate{
+        grid-row: 4;
+        width: 14vw !important;
+        font-size:9px !important;
+        grid-column:22;
+    }
+    
+    .freight{
+        grid-row: 4;
+        width: 16vw;
+        font-size:10px;
+        grid-column:38;
+    }
+
+    .total{
+        grid-row: 4;
+        width: 20vw ;
+        font-size:10px;
+        grid-column:60;
+    }
+
+    .btnCheckout{
+        grid-row: 4;
+        width: 18vw !important;
+        font-size:9px !important;
+        grid-column:76;
+    }
+
 }

@@ -55,14 +55,24 @@ class Cart extends Component {
       buildList(){
         if(this.state.item.loaded){
             let content = []
+            let i = 1
             this.state.item.data.forEach((data)=>{ 
                 content.push(
                     <TableRow key={data[1]}>
                         <TableCell align="left">{data[1]}</TableCell>
-                        <TableCell align="left">{data[2]}</TableCell>
-                        <TableCell align="left">€{data[4]}</TableCell>
+                        <TableCell align="left"><TextField
+                            autoFocus
+                            margin="dense"
+                            id={"quantity"+i}
+                            type="number"
+                            className='quantityItens'
+                            defaultValue = {data[2]}
+                            inputProps={{ min: "0", max: "1000", step: "1" }}
+                          /></TableCell>
+                        <TableCell align="left">€{(data[4])}/U${(data[4]*1.12).toFixed(2)}</TableCell>
                     </TableRow>
                 )
+                i += 1
             })
             
             return(
@@ -72,27 +82,45 @@ class Cart extends Component {
       }
 
       freightCalculator(){
-        if(document.getElementById('zipCode') !== undefined){
-          let value = Math.floor(Math.random() * 100)
-          this.setState({
-            freight: value ,
-            total: this.state.total + value
-          })
+        if(this.state.item.data.length > 0){
+          if(document.getElementById('zipCode') !== undefined){
+            let value = Math.floor(Math.random() * 100)
+            this.setState({
+              freight: value ,
+              total: this.state.total + value
+            })
+          }
+        }
+        else{
+          alert('No Products selected')
         }
       }
 
       checkOut(){
-        let i = 0
-        let user = window.localStorage.getItem('loginPizza')
-        this.state.item.data.forEach((item)=>{
-          PizzaOrders.postItemsHistory('insert',item[0],item[1],item[2],item[4]).then((response)=>{
-            i += 1
-        })
-      })
-      if( i === this.state.item.data.length)
-        PizzaOrders.postItemsHistory('clear',user).then((clear)=>{
-            alert('Thank You!')
-        })
+        if(this.state.item.data.length > 0){
+          if(this.state.freight !== undefined){
+            let i = 1
+            let user = window.localStorage.getItem('loginPizza')
+            this.state.item.data.forEach((item)=>{
+              let quantity = document.getElementById('quantity'+i).value
+              PizzaOrders.postItemsCart('insert',item[0],item[1],quantity,(item[4]*quantity).toFixed(2)).then((response)=>{
+                if(i >= this.state.item.data.length){
+                    PizzaOrders.postItemsCart('clear',user).then((clear)=>{
+                      window.localStorage.clear('quantity')
+                      alert('Thank You!')
+                      window.location.reload();
+                  })
+                }
+              })
+              i += 1
+            })
+          }
+          else
+            alert('Plese enter yout zip code')
+        }
+        else{
+          alert('No Products selected')
+        }
     }
 
       render(){
@@ -132,7 +160,7 @@ class Cart extends Component {
                             Freight price:€{this.state.freight}
                           </p>
                           <p className="total">
-                            Total Price:€{this.state.total}
+                            Total Price:€{this.state.total}/U${(this.state.total*1.12).toFixed(2)}
                           </p>
                           
                           <Fab variant="extended" className='btnCheckout' color="secondary" aria-label="add"  onClick={() => this.checkOut()}> 

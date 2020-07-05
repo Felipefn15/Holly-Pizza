@@ -1,5 +1,4 @@
 import React, { Component }  from 'react';
-import './index.css';
 import Fab from '@material-ui/core/Fab';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -35,7 +34,7 @@ class History extends Component {
   
       refreshReportData(){
         let user = window.localStorage.getItem('loginPizza')
-        PizzaOrders.getItemsCart('orders',user).then((response) => {
+        PizzaOrders.getItemsCart('history',user).then((response) => {
           if(response.data !== null){
           this.setState({
             item:{
@@ -60,7 +59,8 @@ class History extends Component {
                     <TableRow key={data[1]}>
                         <TableCell align="left">{data[1]}</TableCell>
                         <TableCell align="left">{data[2]}</TableCell>
-                        <TableCell align="left">€{data[4]}</TableCell>
+                        <TableCell align="left">€{data[3]}/U${(data[3]*1.12).toFixed(2)}</TableCell>
+                        <TableCell align="left">{data[4]}</TableCell>
                     </TableRow>
                 )
             })

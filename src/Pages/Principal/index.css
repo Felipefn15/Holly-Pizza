@@ -54,15 +54,14 @@
     
 }
 
-/*Left Item*/
-.itemImageLeft{
+.itemImage{
     grid-row: 3;
     grid-column:6;  
     width: 30vw;
     height: 30vh;
 }
 
-.itemNameLeft{
+.itemName{
     grid-row: 40;
     grid-column:3; 
     width: 35vw;
@@ -70,7 +69,7 @@
     color: black;
 }
 
-.itemDescriptionLeft{
+.itemDescription{
     grid-row: 47;
     grid-column:3; 
     width: 35vw; 
@@ -78,50 +77,13 @@
     text-align: center;
 }
 
-.cartButtonLeft{
+.cartButton{
     grid-row: 70;
     grid-column:9; 
     width: 20vw !important; 
 }
 
-.priceLeft{
-    grid-row: 56;
-    grid-column:19; 
-    width: 20vw !important;
-    font-weight: bolder;
-}
-
-
-/*Right Item*/
-.itemImageRight{
-    grid-row: 3;
-    grid-column:6;  
-    width: 30vw;
-    height: 30vh;
-}
-
-.itemNameRight{
-    grid-row: 40;
-    grid-column:3; 
-    width: 35vw;
-    text-align: center;
-    color: black;
-}
-
-.itemDescriptionRight{
-    grid-row: 47;
-    grid-column:3; 
-    width: 35vw; 
-    color: black;
-}
-
-.cartButtonRight{
-    grid-row: 70;
-    grid-column:11; 
-    width: 20vw !important
-}
-
-.priceRight{
+.price{
     grid-row: 56;
     grid-column:19; 
     width: 20vw !important;
@@ -140,4 +102,184 @@
 .Next{
     grid-row: 40;
     grid-column:96;  
+}
+
+
+
+@media screen and (max-width: 1025px) {
+    .price{
+        grid-row: 59;
+        grid-column:16; 
+        width: 20vw !important;
+        font-weight: bolder;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    
+    .menuItemLeft{
+        display: grid !important;
+        background-color: white !important;
+        grid-template-columns: repeat(90, 1vw);
+        grid-template-rows: repeat(77, 1vh);
+        width: 40vw;
+        height: 74vh;
+        grid-row: 0;
+        grid-column:7;  
+    }
+    
+    
+    .menuItemRight{
+        display: grid !important;
+        background-color: white !important;
+        grid-template-columns: repeat(90, 1vw);
+        grid-template-rows: repeat(77, 1vh);
+        width: 40vw;
+        height: 74vh;
+        grid-row: 0;
+        grid-column:55;  
+        
+    }
+    
+    /*Left Item*/
+    .itemImage{
+        grid-row: 5;
+        grid-column:8;  
+        width: 25vw;
+        height: 25vh;
+    }
+    
+    .itemName{
+        grid-row: 30;
+        grid-column:3; 
+        width: 35vw;
+        text-align: center;
+        color: black;
+    }
+    
+    .itemDescription{
+        grid-row: 37;
+        grid-column:3; 
+        width: 35vw; 
+        color: black;
+        text-align: center;
+    }
+    
+    .cartButton{
+        grid-row: 65;
+        grid-column:9; 
+        width: 20vw !important; 
+    }
+    
+    .price{
+        grid-row: 57;
+        grid-column:15; 
+        width: 20vw !important;
+        font-weight: bolder;
+    }
+    
+    
+    .MuiButton-text{
+        padding: 15px !important;
+    }
+    
+    .Previous{
+        grid-row: 40;
+        grid-column:2;  
+    }
+    
+    .Next{
+        grid-row: 40;
+        grid-column:96;  
+    }
+}
+
+
+@media screen and (max-width: 426px) {
+
+
+    .options{
+        grid-row: 0 !important;
+        grid-column:30;
+        width: 105vw;
+        height: 10vh;
+        justify-content: none !important; 
+    }
+    
+    .menuItemLeft{
+        display: grid !important;
+        background-color: white !important;
+        grid-template-columns: repeat(90, 1vw);
+        grid-template-rows: repeat(77, 1vh);
+        width: 40vw;
+        height: 74vh;
+        grid-row: 0;
+        grid-column:7;  
+    }
+    
+    
+    .menuItemRight{
+        display: grid !important;
+        background-color: white !important;
+        grid-template-columns: repeat(90, 1vw);
+        grid-template-rows: repeat(77, 1vh);
+        width: 40vw;
+        height: 74vh;
+        grid-row: 0;
+        grid-column:55;  
+        
+    }
+    
+    /*Left Item*/
+    .itemImage{
+        grid-row: 5;
+        grid-column:8;  
+        width: 25vw;
+        height: 25vh;
+    }
+    
+    .itemName{
+        grid-row: 30;
+        grid-column:3; 
+        width: 35vw;
+        text-align: center;
+        color: black;
+    }
+    
+    .itemDescription{
+        grid-row: 41;
+        grid-column:3; 
+        width: 35vw; 
+        color: black;
+        font-size:11px;
+        text-align: center;
+    }
+    
+    .cartButton{
+        grid-row: 65;
+        grid-column:9; 
+        width: 20vw !important; 
+    }
+    
+    .price{
+        grid-row: 55;
+        grid-column:12; 
+        width: 20vw !important;
+        font-weight: bolder;
+    }
+    
+    
+    .MuiButton-text{
+        padding: 15px !important;
+    }
+    
+    .Previous{
+        grid-row: 40;
+        margin-left:-20px !important;  
+    }
+    
+    .Next{
+        grid-row: 40;
+        grid-column:93;  
+    }
 }

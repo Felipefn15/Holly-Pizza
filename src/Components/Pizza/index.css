@@ -9,7 +9,33 @@
     background-color: white;
 }
 
+@media screen and (min-width: 1025px) {
+    
 .loadingGif{
     grid-row: 10;
     grid-column:35;
+}
+
+}
+
+@media screen and (min-width: 1024px) {
+    .loadingGif{
+        grid-row: 10;
+        grid-column:27;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .loadingGif{
+        grid-row: 10;
+        grid-column:20;
+    }
+}
+
+
+@media screen and (max-width: 426px) {
+    .loadingGif{
+        grid-row: 10;
+        grid-column:1;
+    }
 }

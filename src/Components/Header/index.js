@@ -31,6 +31,10 @@ export default function Header(props) {
     setOpen(true);
   };
 
+  const handleNoLogin = () => {
+    alert('Please make login to continue')
+  }
+
   const handleCloseLogin = () => {
     PizzaOrders.postLogin(document.getElementById('user').value,document.getElementById('password').value).then((response) => {
       if(response.data.data[0] === undefined)
@@ -84,10 +88,17 @@ export default function Header(props) {
           </div>
           <div className="cart">
             <IconButton color="inherit" aria-label="menu">
-              <a href="/cart"><Badge badgeContent={window.localStorage.getItem('quantity')} color="secondary">
+              {window.localStorage.getItem('loginPizza')?
+                <a href="/cart">
+                  <Badge badgeContent={window.localStorage.getItem('quantity')} color="secondary">
+                    <ShoppingCartIcon />
+                  </Badge>
+                </a>
+              :
+              <Badge badgeContent={window.localStorage.getItem('quantity')} onClick={handleNoLogin} color="secondary">
                 <ShoppingCartIcon />
               </Badge>
-              </a>
+              }
             </IconButton>
           </div>
           <div className="login">

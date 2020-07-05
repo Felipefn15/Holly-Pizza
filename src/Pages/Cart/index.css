@@ -50,7 +50,7 @@
 
 .btnCheckout{
     grid-row: 2;
-    width: 7vw;
+    width: 7vw !important;
     grid-column:90;
 }
 

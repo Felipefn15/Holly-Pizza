@@ -10,6 +10,8 @@
 .options{
     grid-row: 0 !important;
     grid-column:30;
+    width: 100vw;
+    height: 10vh;
     justify-content: none !important; 
 }
 
@@ -34,7 +36,7 @@
     grid-template-columns: repeat(90, 1vw);
     grid-template-rows: repeat(77, 1vh);
     width: 40vw;
-    height: 77vh;
+    height: 76vh;
     grid-row: 0;
     grid-column:7;  
 }
@@ -46,7 +48,7 @@
     grid-template-columns: repeat(90, 1vw);
     grid-template-rows: repeat(77, 1vh);
     width: 40vw;
-    height: 77vh;
+    height: 76vh;
     grid-row: 0;
     grid-column:55;  
     
@@ -82,6 +84,14 @@
     width: 20vw !important; 
 }
 
+.priceLeft{
+    grid-row: 56;
+    grid-column:19; 
+    width: 20vw !important;
+    font-weight: bolder;
+}
+
+
 /*Right Item*/
 .itemImageRight{
     grid-row: 3;
@@ -109,6 +119,13 @@
     grid-row: 70;
     grid-column:11; 
     width: 20vw !important
+}
+
+.priceRight{
+    grid-row: 56;
+    grid-column:19; 
+    width: 20vw !important;
+    font-weight: bolder;
 }
 
 .MuiButton-text{

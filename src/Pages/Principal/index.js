@@ -21,12 +21,12 @@ import pizzaSix from '../../Images/pizza6.jfif'
 import pizzaSeven from '../../Images/pizza7.jfif'
 import pizzaEight from '../../Images/pizza8.jfif'
 import sweetOne from '../../Images/sweetOne.jpg'
-import sweetTwo from '../../Images/sweetTwo.jpg'
-import sweetThree from '../../Images/sweetThree.jfif'
+import sweetTwo from '../../Images/sweetTwo.jfif'
+import sweetThree from '../../Images/sweetThree.jpg'
 import sweetFour from '../../Images/sweetFour.jpg'
 import drinkOne from '../../Images/drinkOne.jpg'
-import drinkTwo from '../../Images/drinkTwo.jfif'
-import drinkThree from '../../Images/drinkThree.jpg'
+import drinkTwo from '../../Images/drinkTwo.jpg'
+import drinkThree from '../../Images/drinkThree.jfif'
 import drinkFour from '../../Images/drinkFour.jpg'
 import PizzaOrders from '../../Core/PizzaOrders'
 class Principal extends Component {
@@ -172,12 +172,13 @@ class Principal extends Component {
       if(window.localStorage.getItem('loginPizza')){
         let product = this.state.item.data.filter(content => content[3] === this.state.menu)[indice][0]
         let user = window.localStorage.getItem('loginPizza')
-        PizzaOrders.postItemsCart(user,product).then((response) =>{
+        PizzaOrders.postItemsCart(null,user,product).then((response) =>{
           PizzaOrders.getItemsCart('orders',user).then((orders) => {
             let value = 0
             orders.data.data.forEach((item) =>{
               value += item[2]
               window.localStorage.setItem('quantity', `${value}`)
+              window.location.reload();
             })
             
           })
@@ -193,15 +194,15 @@ class Principal extends Component {
         let data = this.state.item.data.filter(content => content[3] === this.state.menu)[indice]
         return(
         <Card className={"menuItem"+position}>
-          <img src={this.returnImage(indice)} alt="Logo" className="itemImageLeft"/>
-          <h2 className={"itemName"+position}>{data[0]}</h2>
-          <p className={"itemDescription"+position}>
+          <img src={this.returnImage(indice)} alt="Logo" className="itemImage"/>
+          <h2 className={"itemName"}>{data[0]}</h2>
+          <p className={"itemDescription"}>
               {data[1]}
           </p>
-          <p className={"price"+position}>
+          <p className={"price"}>
             Price:€{data[2]}
           </p>
-          <Fab variant="extended" color="secondary" aria-label="add" className={"cartButton"+position} onClick={() => {this.addProduct(indice,this.state.menu)}}> 
+          <Fab variant="extended" color="secondary" aria-label="add" className={"cartButton"} onClick={() => {this.addProduct(indice,this.state.menu)}}> 
             <ShoppingCartIcon/>
             Add Cart
           </Fab>
@@ -211,7 +212,7 @@ class Principal extends Component {
     }
 
     render(){
-      if(this.state.item.loaded){
+      if(false === true){
         return (
           <div className="content">
             <div className="itensMenu">

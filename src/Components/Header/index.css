@@ -71,3 +71,82 @@
     font-size: 12px;
     width: 50vw;
 }
+
+@media screen and (max-width: 426px) {
+
+    .header{
+        display: grid !important;
+        grid-template-columns: repeat(100, 1vw);
+        grid-template-rows: repeat(12, 1vh);
+        width: 105vw;
+        height: 12vh;
+        grid-row: 0;
+        grid-column:0;
+        background-color: #060500;
+    }
+    
+    .headerTitle{
+        display: grid !important;
+        grid-template-columns: repeat(50, 1vw);
+        width: 50vw;
+        height: 12vh;
+        grid-row: 0;
+        grid-column: 37;
+    }
+    
+    .logoImage{
+        grid-row: 0;
+        grid-column:5;
+        height: 12vh;
+        width: 20vw;
+    }
+    
+    .cart{
+        color: #fff;
+        grid-row: 3;
+        grid-column:80;
+    }
+    
+    .login{
+        color: #fff;
+        grid-row: 3;
+        grid-column:90;
+    }
+    
+    .MuiMenu-paper{
+        margin-top: 38px !important;
+    }
+    
+    .content{
+        background-color: ghostwhite;
+        display: grid !important;
+        grid-template-columns: repeat(100, 1vw);
+        grid-template-rows: repeat(83, 1vh);
+        width: 105vw;
+        height: 83vh;
+        grid-row: 12;
+        grid-column:0;
+    }
+    
+    .footer{
+        display: grid !important;
+        grid-template-columns: repeat(100, 1vw);
+        grid-template-rows: repeat(6, 1vh);
+        width: 105vw;
+        height: 10vh;
+        grid-row: 95;
+        text-align: center;
+        grid-column:0;
+        background-color: #060500;
+    }
+    
+    .copyright{
+        color: #fff;
+        grid-row: 0;
+        grid-column:26;
+        font-size: 12px;
+        width: 50vw;
+    }
+
+
+}

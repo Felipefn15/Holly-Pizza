@@ -13,19 +13,19 @@
     
 .loadingGif{
     grid-row: 10;
-    grid-column:35;
+    grid-column:40;
 }
 
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (max-width: 1024px) {
     .loadingGif{
         grid-row: 10;
         grid-column:27;
     }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
     .loadingGif{
         grid-row: 10;
         grid-column:20;

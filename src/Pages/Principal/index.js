@@ -212,7 +212,7 @@ class Principal extends Component {
     }
 
     render(){
-      if(this.state.item.loaded){
+      if(false === true){
         return (
           <div className="content">
             <div className="itensMenu">

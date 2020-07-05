@@ -44,6 +44,7 @@ export default function Header(props) {
   const handleLogOut = () =>{
     window.localStorage.clear()
     setAnchorEl(null);
+    window.location.replace("/")
   }
 
   function loginItens(){
@@ -56,7 +57,7 @@ export default function Header(props) {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleClose}>Orders History</MenuItem>
+          <a href='/history' style={{color:"black" ,textDecoration:"none"}}><MenuItem onClick={handleClose}>Orders History</MenuItem></a>
           <MenuItem onClick={handleLogOut}>Logout</MenuItem>
         </Menu>
       )

@@ -6,7 +6,7 @@ import Cart from '../Pages/Cart'
 
 export default (
   <Router>
-    <Route path="/" component={Principal} />
+    <Route exact path="/" component={Principal} />
     <Route path="/cart" component={Cart} />
   </Router>
 )

@@ -14,7 +14,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
-export default function Structure(props) {
+import PizzaOrders from '../../Core/PizzaOrders'
+export default function Header(props) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
 
@@ -31,12 +32,22 @@ export default function Structure(props) {
   };
 
   const handleCloseLogin = () => {
+    PizzaOrders.postLogin(document.getElementById('user').value,document.getElementById('password').value).then((response) => {
+      if(response.data.data[0] === undefined)
+        alert('Incorrect username or password')
+      else
+        window.localStorage.setItem('loginPizza', `${response.data.data[0][0]}`)
+    })
     setOpen(false);
   };
 
+  const handleLogOut = () =>{
+    window.localStorage.clear()
+    setAnchorEl(null);
+  }
+
   function loginItens(){
-    // window.localStorage.setItem('name', `${response.data.name}`)
-    if(window.localStorage.getItem('name')){
+    if(window.localStorage.getItem('loginPizza')){
       return(
         <Menu
           id="simple-menu"
@@ -46,7 +57,7 @@ export default function Structure(props) {
           onClose={handleClose}
         >
           <MenuItem onClick={handleClose}>Orders History</MenuItem>
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
+          <MenuItem onClick={handleLogOut}>Logout</MenuItem>
         </Menu>
       )
     }
@@ -66,16 +77,16 @@ export default function Structure(props) {
   }
 
     return (
-      <div className="structure">
         <div className="header">
           <div className="headerTitle">
             <img src={logo} alt="Logo" className="logoImage" />
           </div>
           <div className="cart">
             <IconButton color="inherit" aria-label="menu">
-              <Badge badgeContent={1} color="secondary">
+              <a href="/cart"><Badge badgeContent={window.localStorage.getItem('quantity')} color="secondary">
                 <ShoppingCartIcon />
               </Badge>
+              </a>
             </IconButton>
           </div>
           <div className="login">
@@ -95,8 +106,8 @@ export default function Structure(props) {
                   autoFocus
                   margin="dense"
                   id="user"
-                  label="Email Address"
-                  type="email"
+                  label="Email"
+                  type="text"
                   fullWidth
                 />
                 <TextField
@@ -116,14 +127,5 @@ export default function Structure(props) {
             </Dialog>
           </div>
         </div>
-        <div className="content">
-            {props.page}
-        </div>
-        <div className="footer">
-          <div className="copyright">
-            <p>© Felipe França Nogueira</p>
-          </div>
-        </div>
-      </div>
     );
   }

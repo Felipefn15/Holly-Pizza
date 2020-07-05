@@ -16,6 +16,10 @@ import pizzaOne from '../../Images/pizza1.jpg'
 import pizzaTwo from '../../Images/pizza2.jpg'
 import pizzaThree from '../../Images/pizza3.jpg'
 import pizzaFour from '../../Images/pizza4.jpg'
+import pizzaFive from '../../Images/pizza5.jfif'
+import pizzaSix from '../../Images/pizza6.jfif'
+import pizzaSeven from '../../Images/pizza7.jfif'
+import pizzaEight from '../../Images/pizza8.jfif'
 import sweetOne from '../../Images/sweetOne.jpg'
 import sweetTwo from '../../Images/sweetTwo.jpg'
 import sweetThree from '../../Images/sweetThree.jfif'
@@ -24,145 +28,218 @@ import drinkOne from '../../Images/drinkOne.jpg'
 import drinkTwo from '../../Images/drinkTwo.jfif'
 import drinkThree from '../../Images/drinkThree.jpg'
 import drinkFour from '../../Images/drinkFour.jpg'
-
+import PizzaOrders from '../../Core/PizzaOrders'
 class Principal extends Component {
-  constructor() {
-  
-    super()
+    constructor() {
+    
+      super()
 
-    this.state = {
-      item:{
-        data:undefined,
-        loaded: false
-      },
-      menu: 0,
-      positionOne:0,
-      positionTwo:1
+      this.state = {
+        item:{
+          data:undefined,
+          loaded: false
+        },
+        menu: 1,
+        positionOne:0,
+        positionTwo:1
+      }
+
+      this.refreshReportData = this.refreshReportData.bind(this)
     }
 
-    this.refreshReportData = this.refreshReportData.bind(this)
-  }
+    componentDidMount() {
+      this.refreshReportData()
+      this.defineItems(this.state.menu)
+    }
 
-  componentDidMount() {
-    this.refreshReportData()
-    this.defineItems(this.state.menu)
-  }
+    refreshReportData(){
+      PizzaOrders.getAllProducts().then((response) => {
+        this.setState({
+          item:{
+            data:response.data.data,
+            loaded : true
+          }
+        })
+      })
+    }
 
-  refreshReportData(){
-    this.setState({
-      item:{
-        data:[{
-            name:['Margherita Pizza','New York-Style Pizza','Chicago Pizza','Greek Pizza'],
-            image:[pizzaOne,pizzaTwo,pizzaThree,pizzaFour],
-            description:['Lorem ipsum mauris neque commodo tempus curabitur bibendum aliquam pellentesque hac ac, ut nibh potenti lorem mattis aenean enim convallis hac quam.',
-                         'Lorem ipsum mauris neque commodo tempus curabitur bibendum aliquam pellentesque hac ac, ut nibh potenti lorem mattis aenean enim convallis hac quam.',
-                         'Lorem ipsum mauris neque commodo tempus curabitur bibendum aliquam pellentesque hac ac, ut nibh potenti lorem mattis aenean enim convallis hac quam.',
-                         'Lorem ipsum mauris neque commodo tempus curabitur bibendum aliquam pellentesque hac ac, ut nibh potenti lorem mattis aenean enim convallis hac quam.'
-                        ],
-          }, {
-          name:['Chocolate Pizza','Petit Gateau','Ice Cream Cake','Brazilian Brigadeiro'],
-          image:[sweetOne,sweetTwo,sweetThree,sweetFour],
-          description:['Lorem ipsum mauris neque commodo tempus curabitur bibendum aliquam pellentesque hac ac, ut nibh potenti lorem mattis aenean enim convallis hac quam.',
-                        'Lorem ipsum mauris neque commodo tempus curabitur bibendum aliquam pellentesque hac ac, ut nibh potenti lorem mattis aenean enim convallis hac quam.',
-                        'Lorem ipsum mauris neque commodo tempus curabitur bibendum aliquam pellentesque hac ac, ut nibh potenti lorem mattis aenean enim convallis hac quam.',
-                        'Lorem ipsum mauris neque commodo tempus curabitur bibendum aliquam pellentesque hac ac, ut nibh potenti lorem mattis aenean enim convallis hac quam.'
-                      ],
-        },{
-          name:['Coca-Cola','Water','Wine','Brazilian Caipirinha'],
-          image:[drinkOne,drinkTwo,drinkThree,drinkFour],
-          description:['Lorem ipsum mauris neque commodo tempus curabitur bibendum aliquam pellentesque hac ac, ut nibh potenti lorem mattis aenean enim convallis hac quam.',
-                        'Lorem ipsum mauris neque commodo tempus curabitur bibendum aliquam pellentesque hac ac, ut nibh potenti lorem mattis aenean enim convallis hac quam.',
-                        'Lorem ipsum mauris neque commodo tempus curabitur bibendum aliquam pellentesque hac ac, ut nibh potenti lorem mattis aenean enim convallis hac quam.',
-                        'Lorem ipsum mauris neque commodo tempus curabitur bibendum aliquam pellentesque hac ac, ut nibh potenti lorem mattis aenean enim convallis hac quam.'
-                      ],
-        }],
-        loaded:true,
+    defineItems(position){
+        this.setState({
+          menu: position,
+          positionOne: 0 ,
+          positionTwo: 1
+      })
+    }
+
+    changeMenu(value){
+      this.setState({
+        menu:value
+      })
+      this.defineItems(value)
+    }
+
+    changeItem(direction){
+      if(direction === 1){
+        let one = this.state.positionOne
+        let two = this.state.positionTwo
+        this.setState({
+          positionOne: ++one ,
+          positionTwo: ++two 
+        })
+      }
+      else{
+        let one = this.state.positionOne
+        let two = this.state.positionTwo
+        this.setState({
+          positionOne: --one,
+          positionTwo: --two
+        })
+      }
+    }
+
+    returnImage(indice){
+      let image = undefined
+      if(this.state.menu === 1){
+        switch (indice) {
+          case 0:
+            image =  pizzaOne
+            break;
+          case 1:
+            image =  pizzaTwo
+            break;
+          case 2:
+            image =  pizzaThree
+            break;
+          case 3:
+            image =  pizzaFour
+            break;
+          case 4:
+            image =  pizzaFive
+            break;
+          case 5:
+            image =  pizzaSix
+            break;
+          case 6:
+            image =  pizzaSeven
+            break;
+          case 7:
+            image =  pizzaEight
+            break;
+          default:
+            break;
         }
-      })
-  }
-
-  defineItems(position){
-      this.setState({
-        menu: position,
-        positionOne: 0 ,
-        positionTwo: 1
-    })
-  }
-
-  changeMenu(value){
-    this.setState({
-      menu:value
-    })
-    this.defineItems(value)
-  }
-
-  changeItem(direction){
-    if(direction === 1){
-      let one = this.state.positionOne
-      let two = this.state.positionTwo
-      this.setState({
-        positionOne: ++one ,
-        positionTwo: ++two 
-      })
+      }
+      else if(this.state.menu === 2){
+        switch (indice) {
+          case 0:
+            image =  sweetOne
+            break;
+          case 1:
+            image =  sweetTwo
+            break;
+          case 2:
+            image =  sweetThree
+            break;
+          case 3:
+            image =  sweetFour
+            break;
+          default:
+            break;
+        }
+      }
+      else {
+        switch (indice) {
+          case 0:
+            image =  drinkOne
+            break;
+          case 1:
+            image =  drinkTwo
+            break;
+          case 2:
+            image =  drinkThree
+            break;
+          case 3:
+            image =  drinkFour
+            break;
+          default:
+              break;
+        }
+      }
+      return image
     }
-    else{
-      let one = this.state.positionOne
-      let two = this.state.positionTwo
-      this.setState({
-        positionOne: --one,
-        positionTwo: --two
-      })
+
+    addProduct(indice,menu){
+      if(window.localStorage.getItem('loginPizza')){
+        let product = this.state.item.data.filter(content => content[3] === this.state.menu)[indice][0]
+        let user = window.localStorage.getItem('loginPizza')
+        PizzaOrders.postItemsCart(user,product).then((response) =>{
+          PizzaOrders.getItemsCart('orders',user).then((orders) => {
+            let value = 0
+            orders.data.data.forEach((item) =>{
+              value += item[2]
+              window.localStorage.setItem('quantity', `${value}`)
+            })
+            
+          })
+        })
+      }
+      else{
+        alert('Please Login to place the order')
+      }
     }
-  }
+
+    buildItemCard(indice,position){
+      if(this.state.item.loaded){
+        let data = this.state.item.data.filter(content => content[3] === this.state.menu)[indice]
+        return(
+        <Card className={"menuItem"+position}>
+          <img src={this.returnImage(indice)} alt="Logo" className="itemImageLeft"/>
+          <h2 className={"itemName"+position}>{data[0]}</h2>
+          <p className={"itemDescription"+position}>
+              {data[1]}
+          </p>
+          <p className={"price"+position}>
+            Price:€{data[2]}
+          </p>
+          <Fab variant="extended" color="secondary" aria-label="add" className={"cartButton"+position} onClick={() => {this.addProduct(indice,this.state.menu)}}> 
+            <ShoppingCartIcon/>
+            Add Cart
+          </Fab>
+        </Card>
+        )
+      }
+    }
+
     render(){
       if(this.state.item.loaded){
-        let data = this.state.item.data[this.state.menu]
         return (
-          <div className="itensMenu">
-                <BottomNavigation
-                value={this.state.menu}
-                onChange={(event, newMenu) => {
-                  this.changeMenu(newMenu);
-                }}
-                showLabels
-                className="options"
-              >
-                <BottomNavigationAction label="Savory" icon={<LocalPizzaOutlinedIcon />} />
-                <BottomNavigationAction label="Sweet" icon={<CakeOutlinedIcon />} />
-                <BottomNavigationAction label="Drink" icon={<LocalBarOutlinedIcon />} />
-              </BottomNavigation>
-              <div className="menuContent">
-                {
-                  this.state.positionOne === 0? '':
-                  <Button className="Previous" onClick={() => {this.changeItem(0)}}><ArrowBackIosOutlinedIcon /></Button>
-                }
-                <Card className="menuItemLeft">
-                  <img src={data.image[this.state.positionOne]} alt="Logo" className="itemImageLeft"/>
-                  <h2 className="itemNameLeft">{data.name[this.state.positionOne]}</h2>
-                  <p className="itemDescriptionLeft">
-                      {data.description[this.state.positionOne]}
-                  </p>
-                  <Fab variant="extended" color="secondary" aria-label="add" className={"cartButtonLeft"}>
-                    <ShoppingCartIcon/>
-                    Add Cart
-                  </Fab>
-                </Card>
-                <Card className="menuItemRight">
-                  <img src={data.image[this.state.positionTwo]} alt="Logo" className="itemImageRight"/>
-                  <h2 className="itemNameRight">{data.name[this.state.positionTwo]}</h2>
-                  <p className="itemDescriptionRight">
-                    {data.description[this.state.positionTwo]}
-                  </p>
-                  <Fab variant="extended" color="secondary" aria-label="add" className={"cartButtonRight"}>
-                    <ShoppingCartIcon/>
-                    Add Cart
-                  </Fab>
-                </Card>
-                {
-                  this.state.positionTwo === (data.name.length -1) ? '':
-                    <Button className="Next" onClick={() => {this.changeItem(1)}} ><ArrowForwardIosOutlinedIcon /></Button>
-                }
-              </div>
+          <div className="content">
+            <div className="itensMenu">
+                  <BottomNavigation
+                  value={this.state.menu - 1}
+                  onChange={(event, newMenu) => {
+                    this.changeMenu(newMenu + 1);
+                  }}
+                  showLabels
+                  className="options"
+                >
+                  <BottomNavigationAction label="Savory" icon={<LocalPizzaOutlinedIcon />} />
+                  <BottomNavigationAction label="Sweet" icon={<CakeOutlinedIcon />} />
+                  <BottomNavigationAction label="Drink" icon={<LocalBarOutlinedIcon />} />
+                </BottomNavigation>
+                <div className="menuContent">
+                  {
+                    this.state.positionOne === 0? '':
+                    <Button className="Previous" onClick={() => {this.changeItem(0)}}><ArrowBackIosOutlinedIcon /></Button>
+                  }
+                  {this.buildItemCard(this.state.positionOne,'Left')}
+                  {this.buildItemCard(this.state.positionTwo,'Right')}
+                  {
+                    this.state.positionTwo === (this.state.menu === 1?7:3) ? '':
+                      <Button className="Next" onClick={() => {this.changeItem(1)}} ><ArrowForwardIosOutlinedIcon /></Button>
+                  }
+                </div>
+            </div>
           </div>
         );
       }

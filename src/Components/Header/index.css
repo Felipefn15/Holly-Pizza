@@ -1,12 +1,3 @@
-.structure{
-    display: grid !important;
-    height: 100vh;
-    width: 100vw !important;
-    grid-template-columns: repeat(100, 1vw);
-    background-color: white !important;
-    grid-template-rows: repeat(100, 1vh);
-}
-
 .header{
     display: grid !important;
     grid-template-columns: repeat(100, 1vw);
@@ -66,7 +57,7 @@
     grid-template-columns: repeat(100, 1vw);
     grid-template-rows: repeat(6, 1vh);
     width: 100vw;
-    height: 6vh;
+    height: 5vh;
     grid-row: 95;
     text-align: center;
     grid-column:0;

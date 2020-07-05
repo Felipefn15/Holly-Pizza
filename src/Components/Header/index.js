@@ -39,10 +39,11 @@ export default function Header(props) {
     PizzaOrders.postLogin(document.getElementById('user').value,document.getElementById('password').value).then((response) => {
       if(response.data.data[0] === undefined)
         alert('Incorrect username or password')
-      else
+      else{
         window.localStorage.setItem('loginPizza', `${response.data.data[0][0]}`)
+        window.location.replace("/")
+      }
     })
-    setOpen(false);
   };
 
   const handleLogOut = () =>{
@@ -95,7 +96,7 @@ export default function Header(props) {
                   </Badge>
                 </a>
               :
-              <Badge badgeContent={window.localStorage.getItem('quantity')} onClick={handleNoLogin} color="secondary">
+              <Badge badgeContent={0} onClick={handleNoLogin} color="secondary">
                 <ShoppingCartIcon />
               </Badge>
               }

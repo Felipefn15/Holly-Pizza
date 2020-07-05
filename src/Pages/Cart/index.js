@@ -106,7 +106,7 @@ class Cart extends Component {
               PizzaOrders.postItemsCart('insert',item[0],item[1],quantity,(item[4]*quantity).toFixed(2)).then((response)=>{
                 if(i >= this.state.item.data.length){
                     PizzaOrders.postItemsCart('clear',user).then((clear)=>{
-                      window.localStorage.clear('quantity')
+                      window.localStorage.setItem('quantity',0)
                       alert('Thank You!')
                       window.location.reload();
                   })
